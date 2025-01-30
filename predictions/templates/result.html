@@ -6,85 +6,106 @@
     <title>Prediction Result</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             margin: 0;
             padding: 20px;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        h1 {
+        .container {
+            background: #ffffff;
             color: #333;
-            font-size: 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            max-width: 600px;
+            text-align: center;
+            margin: 20px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 28px;
             margin-bottom: 10px;
+            color: #222;
         }
 
         p {
             font-size: 16px;
             color: #555;
-            margin: 5px 0;
+            margin: 8px 0;
         }
 
         h3 {
-            color: #444;
+            font-size: 20px;
             margin: 20px 0 10px;
+            color: #333;
         }
 
-        img {
-            margin: 10px;
-            border: 1px solid #ddd;
+        .wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .wrapper img {
+            width: 100%;
+            max-width: 250px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .wrapper img:hover {
+            transform: scale(1.05);
         }
 
         a {
             display: inline-block;
             margin-top: 20px;
             text-decoration: none;
-            background-color: #007bff;
+            background: #007bff;
             color: #fff;
-            padding: 10px 20px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         a:hover {
-            background-color: #0056b3;
+            background: #0056b3;
         }
-        .wrapper{
-            display: flex;
-        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
-            .wrapper{
-            display: flex;
-            flex-direction: column;
-        }
-            img {
-                max-width: 100%;
-                height: auto;
+            .wrapper {
+                flex-direction: column;
             }
 
-            a {
-                width: 100%;
-                text-align: center;
+            .wrapper img {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Prediction Result</h1>
-    <p>Status: {{ prediction }}</p>
-    <p>Probability: {{ probability }}</p>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p><strong>Status:</strong> {{ prediction }}</p>
+        <p><strong>Probability:</strong> {{ probability }}</p>
 
-    <h3>Uploaded Images:</h3>
-    <div class="wrapper">
-        <img src="{{ image1 }}" alt="Image 1" style="max-width: 300px;">
-        <img src="{{ image2 }}" alt="Image 2" style="max-width: 300px;">
+        <h3>Uploaded Images:</h3>
+        <div class="wrapper">
+            <img src="{{ image1 }}" alt="Image 1">
+            <img src="{{ image2 }}" alt="Image 2">
+        </div>
+        <a href="/">Upload Another Pair</a>
     </div>
-    <br>
-    <a href="/">Upload Another Pair</a>
 </body>
 </html>
